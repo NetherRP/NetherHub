@@ -1,0 +1,46 @@
+rules:
+  locations:
+    tp_on_login: true
+    y_limit:
+      enable: false
+      value: 0
+
+  # - true: feature is enable (by default)
+  # - false: feature is disabled (prevent)
+  features:
+    custom_config:
+      enable: false  # enable individual config
+      default_value: true  # default value if the custom config is turned off
+    damages:
+      pvp: true
+      pve: true
+      fall: true
+      explosion: true
+      fire: true
+      drowning: true
+    player:
+      food_loss: true
+    interactions:
+      world:
+        doors: true
+        fence_gates: true
+        trap_doors: true
+        buttons: true
+        levers: true
+        pressure_plates: true
+      inventory:
+        click: true
+        drop: true
+    build:
+      place: true
+      break: true
+
+spawn:
+  world: 'world'
+  point:
+    x: 0
+    y: 0
+    z: 0
+  facing:
+    yaw: 0
+    pitch: 0
