@@ -1,0 +1,22 @@
+main: 'fr.maesloic.netherrp.netherhub.bungee.Main'
+name: 'NetherHub'
+version: '0.1'
+api-version: '1.20'
+
+permissions:
+  netherhub.*:
+    children:
+      netherhub.commands.*: true
+  netherhub.commands.*:
+    children:
+      netherhub.commands.lobby: true
+  netherhub.commands.lobby:
+    default: true
+    description: 'Utiliser le retour au lobby.'
+
+command:
+  lobby:
+    description: 'Retourner au serveur Lobby.'
+    permission: 'netherhub.commands.lobby'
+    aliases:
+      - 'hub'
