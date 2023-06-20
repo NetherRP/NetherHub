@@ -21,14 +21,8 @@ public class LobbyCommand extends Command {
 
     @Override
     public void execute(CommandSender commandSender, String[] strings) {
-        if (!(commandSender instanceof ProxiedPlayer)) return;
-        final ProxiedPlayer player = (ProxiedPlayer) commandSender;
+        if (!(commandSender instanceof final ProxiedPlayer player)) return;
         if (player.getServer().getInfo().getName().equals("lobby")) return;
-
-        final ByteArrayDataOutput out = ByteStreams.newDataOutput();
-        out.writeUTF("Connect");
-        out.writeUTF("lobby");
-
-        player.sendData("BungeeCord", out.toByteArray());
+        player.connect(this.main.getProxy().getServerInfo("lobby"));
     }
 }
