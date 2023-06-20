@@ -1,4 +1,6 @@
 rules:
+  bungeecord:
+    server_name: '-0'
   # - true: feature is enable (by default)
   # - false: feature is disabled (prevent)
   features:
