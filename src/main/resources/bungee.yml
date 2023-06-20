@@ -14,7 +14,7 @@ permissions:
     default: true
     description: 'Utiliser le retour au lobby.'
 
-command:
+commands:
   lobby:
     description: 'Retourner au serveur Lobby.'
     permission: 'netherhub.commands.lobby'
