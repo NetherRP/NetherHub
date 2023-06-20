@@ -1,10 +1,14 @@
-package fr.maesloic.netherrp.utils.builders.items;
+package fr.maesloic.netherrp.netherhub.spigot.utils.builders.items;
 
+import fr.maesloic.netherrp.netherhub.spigot.utils.builders.components.TextBuilder;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
 
 public class ItemBuilder implements Cloneable {
     // FIELDS
@@ -24,20 +28,20 @@ public class ItemBuilder implements Cloneable {
     }
 
     // METHODS
-    private @NotNull ItemBuilder apply(final @NotNull ItemMeta meta) {
+    public @NotNull ItemBuilder apply(final @NotNull ItemMeta meta) {
         this.item.setItemMeta(meta);
         return this;
     }
 
     // SETTERS
-    public final @NotNull ItemBuilder displayName(final @NotNull Component component) {
+    public final @NotNull ItemBuilder displayName(final @Nullable Component component) {
         final ItemMeta meta = this.meta();
-        meta.displayName(component);
+        meta.displayName(Objects.isNull(component) ? new TextBuilder("&0").build() : component);
         return this.apply(meta);
     }
 
     // GETTERS
-    public final @NotNull ItemMeta meta() {
+    public @NotNull ItemMeta meta() {
         return this.item.getItemMeta();
     }
 

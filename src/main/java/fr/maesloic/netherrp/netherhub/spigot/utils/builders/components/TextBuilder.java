@@ -1,6 +1,7 @@
-package fr.maesloic.netherrp.utils.builders.components;
+package fr.maesloic.netherrp.netherhub.spigot.utils.builders.components;
 
 import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.format.TextDecoration;
 import net.kyori.adventure.text.serializer.legacy.LegacyComponentSerializer;
 import org.jetbrains.annotations.NotNull;
 
@@ -19,6 +20,12 @@ public class TextBuilder {
 
     public TextBuilder(final @NotNull String text) {
         this(LegacyComponentSerializer.legacyAmpersand().deserialize(text));
+    }
+
+    // SETTERS
+    public final @NotNull TextBuilder clearItalic() {
+        this.component = component.decoration(TextDecoration.ITALIC, false);
+        return this;
     }
 
     // GETTERS

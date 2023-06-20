@@ -1,16 +1,10 @@
 rules:
-  locations:
-    tp_on_login: true
-    y_limit:
-      enable: false
-      value: 0
-
   # - true: feature is enable (by default)
   # - false: feature is disabled (prevent)
   features:
     custom_config:
-      enable: false  # enable individual config
-      default_value: true  # default value if the custom config is turned off
+      enable: true  # enable individual config
+      default_value: false  # default value if the custom config is turned off
     damages:
       pvp: true
       pve: true
@@ -20,26 +14,47 @@ rules:
       drowning: true
     player:
       food_loss: true
+      bubble_loss: true
+    build:
+      place: true
+      break: true
     interactions:
       world:
         doors: true
-        fence_gates: true
         trap_doors: true
+        fence_gates: true
         buttons: true
         levers: true
         pressure_plates: true
       inventory:
         click: true
         drop: true
-    build:
-      place: true
-      break: true
+        pickup: true
+        swap: true
+  locations:
+    y_limit: '-0'
+  events:
+    login:
+      tp_to_spawn: false
+      intro:
+        sound: '-0'
+        private_message: '-0'
+        title:
+          value: '-0'
+          subtitle: '-0'
+          timings: # in milliseconds
+            fade_in: 200
+            persistence: 1000
+            fade_out: 200
+      item:
+        texture: '-0'
+        name: '-0'
 
 spawn:
   world: 'world'
   point:
     x: 0
-    y: 0
+    y: 100
     z: 0
   facing:
     yaw: 0

@@ -1,4 +1,4 @@
-main: 'fr.maesloic.netherrp.Main'
+main: 'fr.maesloic.netherrp.netherhub.spigot.Main'
 name: 'NetherHub'
 version: '0.1'
 api-version: '1.20'
