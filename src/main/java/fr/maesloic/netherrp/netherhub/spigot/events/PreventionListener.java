@@ -2,6 +2,7 @@ package fr.maesloic.netherrp.netherhub.spigot.events;
 
 import com.google.common.io.ByteArrayDataOutput;
 import com.google.common.io.ByteStreams;
+import fr.maesloic.netherrp.netherhub.commons.builders.components.TextBuilder;
 import fr.maesloic.netherrp.netherhub.spigot.plugin.NetherHub;
 import fr.maesloic.netherrp.netherhub.spigot.plugin.Settings;
 import org.bukkit.Material;
@@ -94,6 +95,7 @@ public class PreventionListener implements Listener {
             event.setCancelled(true);
 
             if (!Settings.GAME_SERVER.isSet()) return;
+            player.sendMessage(new TextBuilder("&7[&b&lSERVEUR&7]&a Téléportation en cours...").build());
             final String serverName = (String) Objects.requireNonNull(Settings.GAME_SERVER.value());
             final ByteArrayDataOutput out = ByteStreams.newDataOutput();
             out.writeUTF("Connect");
