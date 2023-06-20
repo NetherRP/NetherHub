@@ -1,6 +1,6 @@
 package fr.maesloic.netherrp.netherhub.spigot.plugin;
 
-import fr.maesloic.netherrp.netherhub.spigot.utils.builders.components.TextBuilder;
+import fr.maesloic.netherrp.netherhub.commons.builders.components.TextBuilder;
 import org.bukkit.Server;
 import org.bukkit.command.ConsoleCommandSender;
 import org.jetbrains.annotations.NotNull;

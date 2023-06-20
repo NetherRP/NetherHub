@@ -1,6 +1,6 @@
 package fr.maesloic.netherrp.netherhub.spigot.utils.builders.items;
 
-import fr.maesloic.netherrp.netherhub.spigot.utils.builders.components.TextBuilder;
+import fr.maesloic.netherrp.netherhub.commons.builders.components.TextBuilder;
 import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;

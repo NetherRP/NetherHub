@@ -1,4 +1,4 @@
-package fr.maesloic.netherrp.netherhub.spigot.utils.builders.components;
+package fr.maesloic.netherrp.netherhub.commons.builders.components;
 
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.format.TextDecoration;

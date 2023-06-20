@@ -2,7 +2,7 @@ package fr.maesloic.netherrp.netherhub.spigot.events;
 
 import fr.maesloic.netherrp.netherhub.spigot.plugin.NetherHub;
 import fr.maesloic.netherrp.netherhub.spigot.plugin.Settings;
-import fr.maesloic.netherrp.netherhub.spigot.utils.builders.components.TextBuilder;
+import fr.maesloic.netherrp.netherhub.commons.builders.components.TextBuilder;
 import fr.maesloic.netherrp.netherhub.spigot.utils.builders.items.ItemBuilder;
 import fr.maesloic.netherrp.netherhub.spigot.utils.builders.items.SkullBuilder;
 import net.kyori.adventure.title.Title;
