@@ -6,6 +6,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Objects;
 
+@SuppressWarnings({"BooleanMethodIsAlwaysInverted", "unused"})
 public enum Settings {
     // BUNGEE
     GAME_SERVER(Category.BUNGEE_CORD, null, "server_name"),
@@ -44,6 +45,7 @@ public enum Settings {
     PRESS_BUTTON(Category.FEATURES, "interactions.world", "buttons"), //
     TOGGLE_LEVER(Category.FEATURES, "interactions.world", "levers"), //
     ACTIVATE_PRESSURE_PLATE(Category.FEATURES, "interactions.world", "pressure_plates"), //
+    UPDATE_SIGN(Category.FEATURES, "interactions.world", "signs"), //
     // >> Inventory
     INVENTORY_CLICK(Category.FEATURES, "interactions.inventory", "click"), //
     DROP_ITEM(Category.FEATURES, "interactions.inventory", "drop"), //

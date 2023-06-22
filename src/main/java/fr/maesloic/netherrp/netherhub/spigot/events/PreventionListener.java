@@ -117,7 +117,8 @@ public class PreventionListener implements Listener {
                 this.isPrevented(player, "interactions.world.fence_gates", !(boolean) Objects.requireNonNull(Settings.OPEN_FENCE_GATE.value()) && block.getType().name().contains("_FENCE_GATE")) ||
                 this.isPrevented(player, "interactions.world.buttons", !(boolean) Objects.requireNonNull(Settings.PRESS_BUTTON.value()) && block.getType().name().contains("_BUTTON")) ||
                 this.isPrevented(player, "interactions.world.levers", !(boolean) Objects.requireNonNull(Settings.TOGGLE_LEVER.value()) && block.getType().equals(Material.LEVER)) ||
-                this.isPrevented(player, "interactions.world.pressure_plates", !(boolean) Objects.requireNonNull(Settings.ACTIVATE_PRESSURE_PLATE.value()) && block.getType().name().contains("_PRESSURE_PLATE")))
+                this.isPrevented(player, "interactions.world.pressure_plates", !(boolean) Objects.requireNonNull(Settings.ACTIVATE_PRESSURE_PLATE.value()) && block.getType().name().contains("_PRESSURE_PLATE")) ||
+                this.isPrevented(player, "interactions.world.signs", !(boolean) Objects.requireNonNull(Settings.UPDATE_SIGN.value()) && block.getType().name().contains("_SIGN")))
             event.setUseInteractedBlock(Event.Result.DENY);
     }
 
