@@ -3,3 +3,101 @@ name: 'NetherHub'
 version: '1.0'
 api-version: '1.20'
 load: 'POSTWORLD'
+
+permissions:
+  netherhub.*:
+    children:
+      netherhub.bypass.*: true
+  netherhub.bypass.*:
+    children:
+      netherhub.bypass.damages.*: true
+      netherhub.bypass.player.*: true
+      netherhub.bypass.build.*: true
+      netherhub.bypass.world.*: true
+      netherhub.bypass.interactions.*: true
+  netherhub.bypass.damages.*:
+    children:
+      netherhub.bypass.damages.pvp: true
+      netherhub.bypass.damages.pve: true
+      netherhub.bypass.damages.fall: true
+      netherhub.bypass.damages.explosion: true
+      netherhub.bypass.damages.fire: true
+      netherhub.bypass.damages.drowning: true
+  netherhub.bypass.player.*:
+    children:
+      netherhub.bypass.player.food_loss: true
+      netherhub.bypass.player.bubble_loss: true
+  netherhub.bypass.build.*:
+    children:
+      netherhub.bypass.build.place: true
+      netherhub.bypass.build.break: true
+  netherhub.bypass.world.*:
+    children:
+      netherhub.bypass.world.v_limit: true
+  netherhub.bypass.interactions.*:
+    children:
+      netherhub.bypass.interactions.world.*: true
+      netherhub.bypass.interactions.inventory.*: true
+  netherhub.bypass.interactions.world.*:
+    children:
+      netherhub.bypass.interactions.world.doors: true
+      netherhub.bypass.interactions.world.trapdoors: true
+      netherhub.bypass.interactions.world.fence_gates: true
+      netherhub.bypass.interactions.world.buttons: true
+      netherhub.bypass.interactions.world.levers: true
+      netherhub.bypass.interactions.world.pressure_plates: true
+  netherhub.bypass.interactions.inventory.*:
+    children:
+      netherhub.bypass.interactions.inventory.click: true
+      netherhub.bypass.interactions.inventory.drop: true
+      netherhub.bypass.interactions.inventory.pickup: true
+      netherhub.bypass.interactions.inventory.swap: true
+  # DAMAGES
+  netherhub.bypass.damages.pvp:
+    description: "Pouvoir prendre des dégâts d'un autre joueur même s'ils sont désactivés."
+  netherhub.bypass.damages.pve:
+    description: "Pouvoir prendre des dégâts d'une autre entité même s'ils sont désactivés."
+  netherhub.bypass.damages.fall:
+    description: "Pouvoir prendre des dégâts de chute même s'ils sont désactivés."
+  netherhub.bypass.damages.explosion:
+    description: "Pouvoir prendre des dégâts d'explosion même s'ils sont désactivés."
+  netherhub.bypass.damages.fire:
+    description: "Pouvoir prendre des dégâts du feu même s'ils sont désactivés."
+  netherhub.bypass.damages.drowning:
+    description: "Pouvoir prendre des dégâts de noyade même s'ils sont désactivés."
+  # PLAYERS
+  netherhub.bypass.player.food_loss:
+    description: "Pouvoir perdre la nourriture en courant."
+  netherhub.bypass.player.bubble_loss:
+    description: "Pouvoir perdre de la respiration en nageant."
+  # BUILD
+  netherhub.bypass.build.place:
+    description: "Permettre le placement de blocs."
+  netherhub.bypass.damages.break:
+    description: "Permettre le cassage de blocs."
+  # WORLD
+  netherhub.bypass.world.v_limit:
+    description: "Permettre de passer sous la limite verticale définie en configuration."
+  # INTERACTIONS
+  # > World
+  netherhub.bypass.interactions.world.doors:
+    description: "Permettre d'ouvrir/fermer les portes."
+  netherhub.bypass.interactions.world.trapdoors:
+    description: "Permettre d'ouvrir/fermer les trappes."
+  netherhub.bypass.interactions.world.fence_gates:
+    description: "Permettre d'ouvrir/fermer les portillons."
+  netherhub.bypass.interactions.world.buttons:
+    description: "Permettre d'utiliser les boutons."
+  netherhub.bypass.interactions.world.levers:
+    description: "Permettre d'activer/désactiver les leviers."
+  netherhub.bypass.interactions.world.pressure_plates:
+    description: "Permettre d'utiliser les plaques de pression."
+  # > Inventory
+  netherhub.bypass.interactions.inventory.click:
+    description: "Permettre de cliquer et de déplacer des éléments dans l'inventaire."
+  netherhub.bypass.interactions.inventory.drop:
+    description: "Permettre de jeter des objets de son inventaire."
+  netherhub.bypass.interactions.inventory.pickup:
+    description: "Permettre de récupérer des objets du sol."
+  netherhub.bypass.interactions.inventory.swap:
+    description: "Permettre de changer l'objet de main."
