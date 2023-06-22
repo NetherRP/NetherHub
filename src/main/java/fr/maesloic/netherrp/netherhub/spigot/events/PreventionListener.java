@@ -9,6 +9,7 @@ import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
+import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
@@ -22,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
-@SuppressWarnings("UnstableApiUsage")
+@SuppressWarnings({"UnstableApiUsage","unused"})
 public class PreventionListener implements Listener {
     private final NetherHub plugin;
 
@@ -87,16 +88,14 @@ public class PreventionListener implements Listener {
 
     // INTERACTIONS
     // > World
-    @Deprecated
     @EventHandler
     public final void playerInteract(final @NotNull PlayerInteractEvent event) {
         final ItemStack item = event.getItem();
         final Player player  = event.getPlayer();
         final Action action  = event.getAction();
-        if (event.isCancelled()) return;
 
-        if (Objects.nonNull(item) && item.getType().equals(Material.PLAYER_HEAD)) {
-            event.setCancelled(true);
+        if (Objects.nonNull(item) && item.getType().equals(Material.PLAYER_HEAD) && !event.useItemInHand().equals(Event.Result.DENY)) {
+            event.setUseItemInHand(Event.Result.DENY);
 
             if (!Settings.GAME_SERVER.isSet()) return;
             player.sendMessage(new TextBuilder("&7[&b&lSERVEUR&7]&a Téléportation en cours...").build());
@@ -109,18 +108,17 @@ public class PreventionListener implements Listener {
             return;
         }
 
-        if (!action.equals(Action.RIGHT_CLICK_BLOCK)) return;
+        if (!action.equals(Action.RIGHT_CLICK_BLOCK) || event.useInteractedBlock().equals(Event.Result.DENY)) return;
         final Block block = event.getClickedBlock();
         assert Objects.nonNull(block);
 
-        event.setCancelled(
-                this.isPrevented(player, "interactions.world.doors", !(boolean) Objects.requireNonNull(Settings.OPEN_DOOR.value()) && block.getType().name().contains("_DOOR")) ||
+        if (this.isPrevented(player, "interactions.world.doors", !(boolean) Objects.requireNonNull(Settings.OPEN_DOOR.value()) && block.getType().name().contains("_DOOR")) ||
                 this.isPrevented(player, "interactions.world.trapdoors", !(boolean) Objects.requireNonNull(Settings.OPEN_TRAP_DOOR.value()) && block.getType().name().contains("_TRAPDOOR")) ||
                 this.isPrevented(player, "interactions.world.fence_gates", !(boolean) Objects.requireNonNull(Settings.OPEN_FENCE_GATE.value()) && block.getType().name().contains("_FENCE_GATE")) ||
                 this.isPrevented(player, "interactions.world.buttons", !(boolean) Objects.requireNonNull(Settings.PRESS_BUTTON.value()) && block.getType().name().contains("_BUTTON")) ||
                 this.isPrevented(player, "interactions.world.levers", !(boolean) Objects.requireNonNull(Settings.TOGGLE_LEVER.value()) && block.getType().equals(Material.LEVER)) ||
-                this.isPrevented(player, "interactions.world.pressure_plates", !(boolean) Objects.requireNonNull(Settings.ACTIVATE_PRESSURE_PLATE.value()) && block.getType().name().contains("_PRESSURE_PLATE"))
-        );
+                this.isPrevented(player, "interactions.world.pressure_plates", !(boolean) Objects.requireNonNull(Settings.ACTIVATE_PRESSURE_PLATE.value()) && block.getType().name().contains("_PRESSURE_PLATE")))
+            event.setUseInteractedBlock(Event.Result.DENY);
     }
 
     // > Inventory
