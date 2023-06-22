@@ -45,6 +45,10 @@ public class EntryStreamListener implements Listener {
         if (Settings.INTRO_PRIVATE_MESSAGE.isSet())
             player.sendMessage(new TextBuilder((String) Objects.requireNonNull(Settings.INTRO_PRIVATE_MESSAGE.value())).build());
 
+        setupInventory(player);
+    }
+
+    public static void setupInventory(final @NotNull Player player) {
         final ItemBuilder redPane    = new ItemBuilder(Material.RED_STAINED_GLASS_PANE).displayName(null);
         final ItemBuilder orangePane = new ItemBuilder(Material.ORANGE_STAINED_GLASS_PANE).displayName(null);
         final ItemBuilder yellowPane = new ItemBuilder(Material.YELLOW_STAINED_GLASS_PANE).displayName(null);

@@ -4,10 +4,26 @@ version: '1.0'
 api-version: '1.20'
 load: 'POSTWORLD'
 
+commands:
+  hotbar:
+    description: "Récupérer l'inventaire par défaut."
+    aliases:
+      - "hb"
+    permission: "netherhub.commands.hotbar"
+
 permissions:
   netherhub.*:
     children:
       netherhub.bypass.*: true
+      netherhub.commands.*: true
+  # COMMANDS
+  netherhub.commands.*:
+    children:
+      netherhub.commands.hotbar: true
+  netherhub.commands.hotbar:
+    default: true
+    description: "Accès à la commande pour récupérer l'inventaire par défaut."
+  # BYPASS
   netherhub.bypass.*:
     children:
       netherhub.bypass.damages.*: true

@@ -1,6 +1,7 @@
 package fr.maesloic.netherrp.netherhub.spigot.plugin;
 
 import fr.maesloic.netherrp.netherhub.spigot.Main;
+import fr.maesloic.netherrp.netherhub.spigot.commands.HotBarCommand;
 import fr.maesloic.netherrp.netherhub.spigot.events.EntryStreamListener;
 import fr.maesloic.netherrp.netherhub.spigot.events.PreventionListener;
 import org.bukkit.Bukkit;
@@ -60,6 +61,8 @@ public class NetherHub {
     public final void enable() {
         // SPAWN LOADING
         this.loadSpawn();
+        // COMMANDS
+        this.plugin.getCommand("hotbar").setExecutor(new HotBarCommand());
         // EVENTS
         final PluginManager pm = this.plugin.getServer().getPluginManager();
         pm.registerEvents(new EntryStreamListener(this), this.plugin);
