@@ -53,6 +53,7 @@ permissions:
   netherhub.bypass.interactions.*:
     children:
       netherhub.bypass.interactions.world.*: true
+      netherhub.bypass.interactions.entities.*: true
       netherhub.bypass.interactions.inventory.*: true
   netherhub.bypass.interactions.world.*:
     children:
@@ -63,6 +64,15 @@ permissions:
       netherhub.bypass.interactions.world.levers: true
       netherhub.bypass.interactions.world.pressure_plates: true
       netherhub.bypass.interactions.world.signs: true
+      netherhub.bypass.interactions.world.dragon_egg: true
+      netherhub.bypass.interactions.world.bed: true
+      netherhub.bypass.interactions.world.glow_berries: true
+      netherhub.bypass.interactions.world.sweat_berries: true
+      netherhub.bypass.interactions.world.pots: true
+  netherhub.bypass.interactions.entities.*:
+    children:
+      netherhub.bypass.interactions.entities.item_frame: true
+      netherhub.bypass.interactions.entities.armor_stands: true
   netherhub.bypass.interactions.inventory.*:
     children:
       netherhub.bypass.interactions.inventory.click: true
@@ -111,6 +121,21 @@ permissions:
     description: "Permettre d'utiliser les plaques de pression."
   netherhub.bypass.interactions.world.signs:
     description: "Permettre d'éditer ou d'interagir avec un panneau."
+  netherhub.bypass.interactions.world.dragon_egg:
+    description: "Permettre de téléporter l'oeuf du dragon."
+  netherhub.bypass.interactions.world.bed:
+    description: "Permettre d'interagir avec un lit."
+  netherhub.bypass.interactions.world.glow_berries:
+    description: "Permettre de cueillir des 'glow berries'."
+  netherhub.bypass.interactions.world.sweat_berries:
+    description: "Permettre de cueillir des 'sweat berries'."
+  netherhub.bypass.interactions.world.pots:
+    description: "Permettre de mettre à jour le contenu d'un pot de fleur."
+  # > Entities
+  netherhub.bypass.interactions.entities.item_frame:
+    description: "Permettre de mettre à jour le contenu d'un cadre."
+  netherhub.bypass.interactions.entities.armor_stands:
+    description: "Permettre de changer l'équipement d'un porte-armure."
   # > Inventory
   netherhub.bypass.interactions.inventory.click:
     description: "Permettre de cliquer et de déplacer des éléments dans l'inventaire."

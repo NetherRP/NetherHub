@@ -7,6 +7,7 @@ import fr.maesloic.netherrp.netherhub.spigot.plugin.NetherHub;
 import fr.maesloic.netherrp.netherhub.spigot.plugin.Settings;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
+import org.bukkit.entity.ArmorStand;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
@@ -108,7 +109,7 @@ public class PreventionListener implements Listener {
             return;
         }
 
-        if (!action.equals(Action.RIGHT_CLICK_BLOCK) || event.useInteractedBlock().equals(Event.Result.DENY)) return;
+        if ((!action.equals(Action.LEFT_CLICK_BLOCK) && !action.equals(Action.RIGHT_CLICK_BLOCK)) || event.useInteractedBlock().equals(Event.Result.DENY)) return;
         final Block block = event.getClickedBlock();
         assert Objects.nonNull(block);
 
@@ -118,8 +119,26 @@ public class PreventionListener implements Listener {
                 this.isPrevented(player, "interactions.world.buttons", !(boolean) Objects.requireNonNull(Settings.PRESS_BUTTON.value()) && block.getType().name().contains("_BUTTON")) ||
                 this.isPrevented(player, "interactions.world.levers", !(boolean) Objects.requireNonNull(Settings.TOGGLE_LEVER.value()) && block.getType().equals(Material.LEVER)) ||
                 this.isPrevented(player, "interactions.world.pressure_plates", !(boolean) Objects.requireNonNull(Settings.ACTIVATE_PRESSURE_PLATE.value()) && block.getType().name().contains("_PRESSURE_PLATE")) ||
-                this.isPrevented(player, "interactions.world.signs", !(boolean) Objects.requireNonNull(Settings.UPDATE_SIGN.value()) && block.getType().name().contains("_SIGN")))
+                this.isPrevented(player, "interactions.world.signs", !(boolean) Objects.requireNonNull(Settings.UPDATE_SIGN.value()) && block.getType().name().contains("_SIGN")) ||
+                this.isPrevented(player, "interactions.world.dragon_egg", !(boolean) Objects.requireNonNull(Settings.PUNCH_DRAGON_EGG.value()) && block.getType().equals(Material.DRAGON_EGG)) ||
+                this.isPrevented(player, "interactions.world.bed", !(boolean) Objects.requireNonNull(Settings.GO_TO_SLEEP.value()) && block.getType().name().contains("_BED")) ||
+                this.isPrevented(player, "interactions.world.glow_berries", !(boolean) Objects.requireNonNull(Settings.PICK_GLOW_BERRIES.value()) && block.getType().equals(Material.GLOW_BERRIES)) ||
+                this.isPrevented(player, "interactions.world.sweat_berries", !(boolean) Objects.requireNonNull(Settings.PICK_SWEAT_BERRIES.value()) && block.getType().equals(Material.SWEET_BERRY_BUSH)) ||
+                this.isPrevented(player, "interactions.world.pots", !(boolean) Objects.requireNonNull(Settings.UPDATE_FLOWER_POT.value()) && block.getType().equals(Material.FLOWER_POT)) ||
+                this.isPrevented(player, "interactions.entities.item_frame", !(boolean) Objects.requireNonNull(Settings.UPDATE_ITEM_FRAME.value()) && block.getType().name().contains("ITEM_FRAME")))
             event.setUseInteractedBlock(Event.Result.DENY);
+    }
+
+    @EventHandler
+    public final void playerInteractAtEntity(final @NotNull PlayerInteractAtEntityEvent event) {
+        final Player player = event.getPlayer();
+        final Entity entity = event.getRightClicked();
+
+        if (event.isCancelled()) return;
+
+        event.setCancelled(
+                this.isPrevented(player, "interactions.entities.armor_stands", !(boolean) Objects.requireNonNull(Settings.UPDATE_ARMOR_STAND.value()) && entity instanceof ArmorStand)
+        );
     }
 
     // > Inventory

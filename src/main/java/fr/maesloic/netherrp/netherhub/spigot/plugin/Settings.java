@@ -46,6 +46,14 @@ public enum Settings {
     TOGGLE_LEVER(Category.FEATURES, "interactions.world", "levers"), //
     ACTIVATE_PRESSURE_PLATE(Category.FEATURES, "interactions.world", "pressure_plates"), //
     UPDATE_SIGN(Category.FEATURES, "interactions.world", "signs"), //
+    PUNCH_DRAGON_EGG(Category.FEATURES, "interactions.world", "dragon_egg"),
+    GO_TO_SLEEP(Category.FEATURES, "interactions.world", "bed"),
+    PICK_GLOW_BERRIES(Category.FEATURES, "interactions.world", "glow_berries"),
+    PICK_SWEAT_BERRIES(Category.FEATURES, "interactions.world", "sweat_berries"),
+    UPDATE_FLOWER_POT(Category.FEATURES, "interactions.world", "pots"),
+    // >> Entities
+    UPDATE_ITEM_FRAME(Category.FEATURES, "interactions.entities", "item_frames"),
+    UPDATE_ARMOR_STAND(Category.FEATURES, "interactions.entities", "armor_stands"),
     // >> Inventory
     INVENTORY_CLICK(Category.FEATURES, "interactions.inventory", "click"), //
     DROP_ITEM(Category.FEATURES, "interactions.inventory", "drop"), //

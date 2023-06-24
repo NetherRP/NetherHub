@@ -28,6 +28,15 @@ rules:
         buttons: true
         levers: true
         pressure_plates: true
+        signs: true
+        dragon_egg: true
+        bed: true
+        glow_berries: true
+        sweat_berries: true
+        pots: true
+      entities:
+        item_frames: true
+        armor_stands: true
       inventory:
         click: true
         drop: true
