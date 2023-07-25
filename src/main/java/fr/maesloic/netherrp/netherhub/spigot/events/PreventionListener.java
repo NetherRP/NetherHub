@@ -124,7 +124,7 @@ public class PreventionListener implements Listener {
                 this.isPrevented(player, "interactions.world.bed", !(boolean) Objects.requireNonNull(Settings.GO_TO_SLEEP.value()) && block.getType().name().contains("_BED")) ||
                 this.isPrevented(player, "interactions.world.glow_berries", !(boolean) Objects.requireNonNull(Settings.PICK_GLOW_BERRIES.value()) && block.getType().equals(Material.GLOW_BERRIES)) ||
                 this.isPrevented(player, "interactions.world.sweat_berries", !(boolean) Objects.requireNonNull(Settings.PICK_SWEAT_BERRIES.value()) && block.getType().equals(Material.SWEET_BERRY_BUSH)) ||
-                this.isPrevented(player, "interactions.world.pots", !(boolean) Objects.requireNonNull(Settings.UPDATE_FLOWER_POT.value()) && block.getType().equals(Material.FLOWER_POT)) ||
+                this.isPrevented(player, "interactions.world.pots", !(boolean) Objects.requireNonNull(Settings.UPDATE_FLOWER_POT.value()) && (block.getType().equals(Material.FLOWER_POT) || block.getType().name().contains("POTTED_"))) ||
                 this.isPrevented(player, "interactions.entities.item_frame", !(boolean) Objects.requireNonNull(Settings.UPDATE_ITEM_FRAME.value()) && block.getType().name().contains("ITEM_FRAME")))
             event.setUseInteractedBlock(Event.Result.DENY);
     }
